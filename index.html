@@ -12,7 +12,7 @@
       --bg-color: #121212;
       --font-color: #ffffff;
       --font-size: 16px;
-      --font-family: 'Pretendard', sans-serif; /* 변경된 부분 */
+      --font-family: 'Pretendard', sans-serif;
     }
 
     body {
@@ -30,11 +30,11 @@
     .card {
       width: 100%;
       max-width: 600px;
-      border: 1px solid #ddd;
       border-radius: 5px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       background: #1e1e1e;
+      position: relative;
     }
 
     .profile {
@@ -50,8 +50,13 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5); /* 변경된 부분: 밝은 색 그림자 */
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
     }
+
+    /* .profile img:hover {
+      transform: translateY(-5px);
+    } */
 
     h1 {
       font-size: 1.5rem;
@@ -62,6 +67,7 @@
       font-size: 1rem;
       font-weight: normal;
       margin: 0.2rem 0 1rem;
+      line-height: 1.2;
     }
 
     .info {
@@ -82,6 +88,15 @@
       font-weight: bold;
     }
 
+    .shinhan-logo {
+      position: absolute; /* 절대 위치 지정 */
+      bottom: 24px; /* 하단 여백 */
+      right: 24px; /* 우측 여백 */
+      width: 30px; /* 로고 크기 조정 */
+      height: auto; /* 비율 유지 */
+      transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+    }
+
     @media (max-width: 480px) {
       .card {
         padding: 1rem;
@@ -91,14 +106,35 @@
         height: 100px;
       }
     }
+
+    .profile-img {
+      transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+    }
+
+    .spark {
+      animation: spark 0.5s ease; /* 클릭 시 스파크 애니메이션 */
+    }
+
+    @keyframes spark {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1); /* 스파크 효과 */
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
   </style>
 </head>
 <body>
   <main class="card" role="region" aria-label="디지털 명함">
     <div class="profile">
-      <img src="mini_emoji_removebg.png" alt="김민희  프로필 사진" />
+      <img src="mini_emoji_removebg.png" alt="김민희 프로필 사진" class="profile-img" />
       <h1>김민희</h1>
-      <h2>디지털서비스개발부<br/>신한은행 (Shinhan Bank)</h2>
+      <h2>신한은행 (Shinhan Bank)<br/>디지털서비스개발부</h2>
     </div>
     <div class="info" aria-label="연락처 정보">
       <p><span class="label">전화:</span> <a href="tel:01062179873" aria-label="전화걸기 010-6217-9873">010-6217-9873</a></p>
@@ -108,6 +144,24 @@
         서울특별시 중구 세종대로 67
       </a></p>
     </div>
+    <img src="shinhan_logo.png" alt="신한 로고" class="shinhan-logo" />
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const profileImg = document.querySelector('.profile-img');
+
+      profileImg.addEventListener('mouseover', function() {
+        // 스파크 클래스 추가
+        profileImg.classList.add('spark');
+
+        // 애니메이션이 끝난 후 클래스 제거
+        setTimeout(() => {
+          profileImg.classList.remove('spark');
+        }, 500); // 애니메이션 지속 시간과 일치
+      });
+    });
+  </script>
+
 </body>
 </html>
