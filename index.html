@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김민희 - 디지털 명함</title>
+  <style>
+    :root {
+      --primary-color: #ffffff;
+      --accent-color: #ffffff;
+      --bg-color: #121212;
+      --font-color: #ffffff;
+      --font-size: 16px;
+      --font-family: 'Pretendard', sans-serif; /* 변경된 부분 */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      font-family: var(--font-family);
+      color: var(--font-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 600px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      background: #1e1e1e;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5); /* 변경된 부분: 밝은 색 그림자 */
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0.2rem 0;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      margin: 0.2rem 0 1rem;
+    }
+
+    .info {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .info a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .info a:hover {
+      text-decoration: underline;
+    }
+
+    .label {
+      font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1rem;
+      }
+      .profile img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="region" aria-label="디지털 명함">
+    <div class="profile">
+      <img src="mini_emoji_removebg.png" alt="김민희  프로필 사진" />
+      <h1>김민희</h1>
+      <h2>디지털서비스개발부<br/>신한은행 (Shinhan Bank)</h2>
+    </div>
+    <div class="info" aria-label="연락처 정보">
+      <p><span class="label">전화:</span> <a href="tel:01062179873" aria-label="전화걸기 010-6217-9873">010-6217-9873</a></p>
+      <p><span class="label">이메일:</span> <a href="mailto:minhee@shinhan.com" aria-label="이메일 보내기">minhee@shinhan.com</a></p>
+      <p><span class="label">웹사이트:</span> <a href="http://www.shinhan.com" target="_blank" rel="noopener" aria-label="신한은행 웹사이트 열기">http://www.shinhan.com</a></p>
+      <p><span class="label">주소:</span> <a href="https://naver.me/5du4BHzx" target="_blank" rel="noopener" aria-label="주소 위치 보기">
+        서울특별시 중구 세종대로 67
+      </a></p>
+    </div>
+  </main>
+</body>
+</html>
