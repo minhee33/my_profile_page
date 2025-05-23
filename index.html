@@ -72,7 +72,7 @@
 
     .info {
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.2;
     }
 
     .info a {
@@ -127,6 +127,39 @@
       }
     }
 
+    .heart-container {
+      position: relative; /* 상대 위치 지정 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px; /* 프로필 이미지와 간격 조정 */
+    }
+
+    .heart {
+      position: absolute; /* 절대 위치 지정 */
+      font-size: 24px; /* 하트 크기 조정 */
+      animation: none; /* 초기 애니메이션 없음 */
+    }
+
+    .heart.pop {
+      animation: pop 0.5s ease forwards; /* 하트 애니메이션 */
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5); /* 하트 확대 */
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-30px); /* 위로 이동 */
+        opacity: 0; /* 사라짐 */
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -135,6 +168,7 @@
       <img src="mini_emoji_removebg.png" alt="김민희 프로필 사진" class="profile-img" />
       <h1>김민희</h1>
       <h2>신한은행 (Shinhan Bank)<br/>디지털서비스개발부</h2>
+      <div class="heart-container"></div>
     </div>
     <div class="info" aria-label="연락처 정보">
       <p><span class="label">전화:</span> <a href="tel:01062179873" aria-label="전화걸기 010-6217-9873">010-6217-9873</a></p>
@@ -159,6 +193,29 @@
         setTimeout(() => {
           profileImg.classList.remove('spark');
         }, 500); // 애니메이션 지속 시간과 일치
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const profileImg = document.querySelector('.profile-img');
+      const heartContainer = document.querySelector('.heart-container');
+
+      profileImg.addEventListener('click', function() {
+        // 하트 요소 생성
+        const heart = document.createElement('span');
+        heart.className = 'heart'; // 하트 클래스 추가
+        heart.innerHTML = '❤️'; // 하트 이모티콘 추가
+        heartContainer.appendChild(heart); // 하트 컨테이너에 추가
+
+        // 하트 애니메이션 추가
+        setTimeout(() => {
+          heart.classList.add('pop'); // 애니메이션 클래스 추가
+        }, 10);
+
+        // 애니메이션이 끝난 후 하트 제거
+        setTimeout(() => {
+          heart.remove();
+        }, 1000); // 애니메이션 지속 시간과 일치
       });
     });
   </script>
