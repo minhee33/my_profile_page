@@ -160,6 +160,10 @@
       }
     }
 
+    .hidden {
+      display: none; /* 변경된 부분: 숨김 클래스 */
+    }
+
   </style>
 </head>
 <body>
@@ -168,7 +172,9 @@
       <img src="mini_emoji_removebg.png" alt="김민희 프로필 사진" class="profile-img" />
       <h1>김민희</h1>
       <h2>신한은행 (Shinhan Bank)<br/>디지털서비스개발부</h2>
-      <div class="heart-container"></div>
+      <div class="heart-container">
+        <div class="heart-count hidden">🤍 0</div>
+      </div>
     </div>
     <div class="info" aria-label="연락처 정보">
       <p><span class="label">전화:</span> <a href="tel:01062179873" aria-label="전화걸기 010-6217-9873">010-6217-9873</a></p>
@@ -199,12 +205,14 @@
     document.addEventListener("DOMContentLoaded", function() {
       const profileImg = document.querySelector('.profile-img');
       const heartContainer = document.querySelector('.heart-container');
+      const heartCount = document.querySelector('.heart-count'); // 변경된 부분: 하트 개수 요소 선택
+      let count = 0; // 하트 개수를 저장할 변수
 
       profileImg.addEventListener('click', function() {
         // 하트 요소 생성
         const heart = document.createElement('span');
         heart.className = 'heart'; // 하트 클래스 추가
-        heart.innerHTML = '❤️'; // 하트 이모티콘 추가
+        heart.innerHTML = `🤍 ${count}`; // 하트 이모티콘 추가
         heartContainer.appendChild(heart); // 하트 컨테이너에 추가
 
         // 하트 애니메이션 추가
@@ -216,6 +224,13 @@
         setTimeout(() => {
           heart.remove();
         }, 1000); // 애니메이션 지속 시간과 일치
+
+        // 하트 개수 증가
+        count++;
+        heartCount.innerHTML = `🤍 ${count}`; // 하트 개수 업데이트
+
+        // 하트 개수 표시
+        // heartCount.classList.remove('hidden'); // 하트 개수 표시
       });
     });
   </script>
